@@ -1,0 +1,42 @@
+﻿.container {
+    width: 1920px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+@media (max-width: 1920px) {
+    .container {
+        width: 1800px;
+    }
+}
+
+@media (max-width: 1800px) {
+    .container {
+        width: 1440px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .container {
+        width: 1160px;
+    }
+}
+
+@media (max-width: 1160px) {
+    .container {
+        width: 960px;
+    }
+}
+
+@media (max-width: 960px) {
+    .container {
+        width: 760px;
+    }
+}
+
+@media (max-width: 760px) {
+    .container {
+        width: 100%;
+        padding: 0 10px;
+    }
+}

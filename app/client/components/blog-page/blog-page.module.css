@@ -1,0 +1,29 @@
+﻿.container {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 960px;
+    gap: 16px;
+}
+
+.applicationContainer {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+/*.applicationItem:before, .applicationItem:after {*/
+/*    content:"";*/
+/*    display:block;*/
+/*    clear:both;*/
+/*}*/
+
+.application {
+    /*display:block;*/
+    /*width:120px;*/
+    /*height:120px;*/
+    /*border-radius:50%;*/
+    /*float: left;*/
+}
