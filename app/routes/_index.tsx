@@ -19,13 +19,14 @@ function isBot(ua: string) {
 
 export const loader: LoaderFunction = async ({ request }): Promise<LoaderResponse> => {
   const userAgent = request.headers.get('user-agent') || '';
+  const referer = request.headers.get('referer') || '';
   const ip = request.headers.get('x-forwarded-for') || request.headers.get('cf-connecting-ip') || 'unknown';
 
-  logger.info('Request Log', { userAgent, ip });
+  logger.info('Request Log', { userAgent, ip, referer });
 
   const isCloaked = isBot(userAgent);
   if (isCloaked) {
-    logger.error('Bot Came In Log', { userAgent, ip });
+    logger.error('Bot Came In Log', { userAgent, ip, referer });
   }
 
   return { isCloaked, redirectUrl: process.env.REDIRECT_HOST as string };

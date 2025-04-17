@@ -10,3 +10,11 @@ body {
   /*  color-scheme: dark;*/
   /*}*/
 }
+
+body{ 
+    --cl-bg: #120633;
+    --cl-text: azure;
+    
+    background: var(--cl-bg);
+    color: var(--cl-text);
+}
