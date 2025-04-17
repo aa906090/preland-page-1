@@ -1,33 +1,12 @@
-﻿.container {
+﻿.content {
+    position: relative;
     display: flex;
-    justify-items: center;
-    align-items: center;
     flex-direction: column;
-    max-width: 960px;
-    gap: 16px;
-}
-
-.main-container {
-    
-}
-
-.applicationContainer {
-    display:flex;
-    flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
     gap: 16px;
+    height: 100vh;
+    padding: 24px;
 }
 
-/*.applicationItem:before, .applicationItem:after {*/
-/*    content:"";*/
-/*    display:block;*/
-/*    clear:both;*/
-/*}*/
 
-.application {
-    /*display:block;*/
-    /*width:120px;*/
-    /*height:120px;*/
-    /*border-radius:50%;*/
-    /*float: left;*/
-}

@@ -12,7 +12,9 @@ function getRandomInt(max = 8) {
 
 const Trap = ({ rotation = 0 }: { rotation: number }) => (
   <div className={cn(`rotate-[${rotation}deg]`, styles.poligonContainer)}>
-    <span className={cn(styles.poligon, 'text-4xl text-green-100 rotate-[65deg]')}>text</span>
+    <div className={styles.poligon}>
+      <span>text</span>
+    </div>
     <div className={cn(styles.border)} />
   </div>
 );
@@ -48,6 +50,37 @@ const Circle = () => {
           </div>
         </div>
       </div>
+      {/* Don't know why, but working only with this shit todo investigate*/}
+      {/*<div className='relative w-[300px] h-[300px] mx-auto my-10'>*/}
+      {/*  <div className='absolute inset-0 rounded-full border-2 border-gray-400' />*/}
+
+      {/*  <div className='absolute w-full h-full'>*/}
+      {/*    <div className='absolute left-1/2 top-1/2 origin-top rotate-[0deg]'>*/}
+      {/*      <div className='w-10 h-20 bg-orange-500 clip-trapezoid mx-auto' />*/}
+      {/*    </div>*/}
+      {/*    <div className='absolute left-1/2 top-1/2 origin-top rotate-[45deg]'>*/}
+      {/*      <div className='w-10 h-20 bg-orange-500 clip-trapezoid mx-auto' />*/}
+      {/*    </div>*/}
+      {/*    <div className='absolute left-1/2 top-1/2 origin-top rotate-[90deg]'>*/}
+      {/*      <div className='w-10 h-20 bg-orange-500 clip-trapezoid mx-auto' />*/}
+      {/*    </div>*/}
+      {/*    <div className='absolute left-1/2 top-1/2 origin-top rotate-[135deg]'>*/}
+      {/*      <div className='w-10 h-20 bg-orange-500 clip-trapezoid mx-auto' />*/}
+      {/*    </div>*/}
+      {/*    <div className='absolute left-1/2 top-1/2 origin-top rotate-[180deg]'>*/}
+      {/*      <div className='w-10 h-20 bg-orange-500 clip-trapezoid mx-auto' />*/}
+      {/*    </div>*/}
+      {/*    <div className='absolute left-1/2 top-1/2 origin-top rotate-[225deg]'>*/}
+      {/*      <div className='w-10 h-20 bg-orange-500 clip-trapezoid mx-auto' />*/}
+      {/*    </div>*/}
+      {/*    <div className='absolute left-1/2 top-1/2 origin-top rotate-[270deg]'>*/}
+      {/*      <div className='w-10 h-20 bg-orange-500 clip-trapezoid mx-auto' />*/}
+      {/*    </div>*/}
+      {/*    <div className='absolute left-1/2 top-1/2 origin-top rotate-[315deg]'>*/}
+      {/*      <div className='w-10 h-20 bg-orange-500 clip-trapezoid mx-auto' />*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
     </div>
   );
 };

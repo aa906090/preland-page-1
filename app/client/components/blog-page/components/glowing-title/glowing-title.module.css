@@ -1,0 +1,23 @@
+﻿.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: cursive;
+}
+
+.title {
+    font-size: 48px;
+    text-align: center;
+    color: #fff;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #a67c00, 0 0 40px #a67c00, 0 0 50px #a67c00, 0 0 60px #a67c00, 0 0 70px #a67c00;
+    }
+
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #FDBE00FF, 0 0 40px #FDBE00FF, 0 0 50px #FDBE00FF, 0 0 60px #FDBE00FF, 0 0 70px #FDBE00FF, 0 0 80px #FDBE00FF;
+    }
+}

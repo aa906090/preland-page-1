@@ -1,5 +1,7 @@
 ﻿import MainBg from '~/client/assets/images/main-bg.jpg';
 import ManWithLaptop from '~/client/assets/images/man-with-laptop.png';
+import GlowingTitle from '~/client/components/blog-page/components/glowing-title/glowing-title';
+import TakePrize from '~/client/components/blog-page/components/take-prize/take-prize';
 import Circle from '~/client/components/circle/circle';
 import Header from '~/client/components/header/header';
 
@@ -14,15 +16,11 @@ const BlogPage = ({ redirectUrl }: { redirectUrl: string }) => {
     <main className='mx-auto font-sans'>
       <div className='relative min-h-screen bg-black'>
         <img className='absolute inset-0 w-full h-full object-cover' src={MainBg} alt='background' />
-        <div className='relative '>
-          <div>
-            <h1>Твоя удача уже рядом</h1>
-          </div>
+        <div className={styles.content}>
+          <GlowingTitle />
           {/*<Header />*/}
           <Circle />
-          <div className='z-10'>
-            <button>Забрать свой приз</button>
-          </div>
+          <TakePrize />
         </div>
       </div>
       <h1 className='text-3xl font-bold mb-4'>Как я выиграл 320€ за 10 минут</h1>
