@@ -1,4 +1,7 @@
-﻿import ManWithLaptop from '~/client/assets/images/man-with-laptop.png';
+﻿import MainBg from '~/client/assets/images/main-bg.jpg';
+import ManWithLaptop from '~/client/assets/images/man-with-laptop.png';
+import Circle from '~/client/components/circle/circle';
+import Header from '~/client/components/header/header';
 
 import styles from './blog-page.module.css';
 const BlogPage = ({ redirectUrl }: { redirectUrl: string }) => {
@@ -8,7 +11,20 @@ const BlogPage = ({ redirectUrl }: { redirectUrl: string }) => {
     window.location.replace(redirectUrl);
   };
   return (
-    <main className='max-w-xl mx-auto p-6 font-sans'>
+    <main className='mx-auto font-sans'>
+      <div className='relative min-h-screen bg-black'>
+        <img className='absolute inset-0 w-full h-full object-cover' src={MainBg} alt='background' />
+        <div className='relative '>
+          <div>
+            <h1>Твоя удача уже рядом</h1>
+          </div>
+          {/*<Header />*/}
+          <Circle />
+          <div className='z-10'>
+            <button>Забрать свой приз</button>
+          </div>
+        </div>
+      </div>
       <h1 className='text-3xl font-bold mb-4'>Как я выиграл 320€ за 10 минут</h1>
       <img src={ManWithLaptop} alt='man-with-laptop' className='rounded-lg mb-4' />
       <p className='mb-4 text-gray-700'>

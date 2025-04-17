@@ -1,0 +1,21 @@
+﻿.container {
+    display: flex;
+    justify-content: space-evenly;
+    color: var(--cl-text);
+    max-height: 80px;
+}
+
+.headerItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    flex: 0.5;
+}
+
+.centerItem {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
