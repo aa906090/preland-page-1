@@ -1,0 +1,55 @@
+﻿.container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    transition: 0.5s ease-in-out;
+    
+    --local-padding-y: 20px;
+    --local-padding-x: 15px;
+    --local-header-fs: 30px;
+}
+
+.modalContainer {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 50vh;
+    min-width: 300px;
+    min-height: 200px;
+    background-color: #13072c;
+    border-radius: 10px;
+    padding: var(--local-padding-x) var(--local-padding-y);
+}
+
+.closeButton {
+    font-size: 20px;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*padding: 10px 15px;*/
+    font-size: var(--local-header-fs);
+}
+.headerText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.modalBody {
+    height: calc(100% - var(--local-header-fs) - var(--local-padding-y));
+    display: flex;
+    /*height: 100%;*/
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+}

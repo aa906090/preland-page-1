@@ -1,14 +1,16 @@
-﻿import { useEffect, useRef } from 'react';
+﻿import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 
 import ArrowImage from '~/client/assets/images/circle-arrow.png';
-import CircleClearImage from '~/client/assets/images/clear wheel 2-p.png';
+import CircleClearImage from '~/client/assets/images/wheel-with-text.png';
 
 import styles from './circle.module.css';
 
 function getRandomInt(max = 8) {
   return Math.floor(Math.random() * max);
 }
+
+const DEG = 360;
 
 const Trap = ({ rotation = 0 }: { rotation: number }) => (
   <div className={cn(`rotate-[${rotation}deg]`, styles.poligonContainer)}>
@@ -19,35 +21,53 @@ const Trap = ({ rotation = 0 }: { rotation: number }) => (
   </div>
 );
 
-const Circle = () => {
+const textArray = [
+  'Бонус 120%',
+  'Бонус 100%',
+  '1 000UAH',
+  '170 000UAH',
+  '25 Фриспинов',
+  '60UAH',
+  '600 Фриспинов',
+  'Бонус 110%',
+];
+
+const Circle = ({ openModal }: { openModal: (text: string) => void }) => {
+  const [currentPosition, setCurrentPosition] = useState(0);
   const ref = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     let timeout = undefined;
     if (ref?.current) {
       timeout = setTimeout(() => {
-        ref.current.style.transform = `rotate(${2100 + getRandomInt(45) + 45 * getRandomInt(8)}deg)`;
+        const move = getRandomInt(DEG / textArray.length);
+        const position = getRandomInt(textArray.length);
+        const rotations = DEG * 6 + move + (DEG / textArray.length) * position;
+
+        ref.current.style.transform = `rotate(${rotations}deg)`;
         ref.current.style.transition = 'transform 3s ease';
+        setCurrentPosition(Math.floor((DEG - (rotations % DEG)) / 45));
       }, 1000);
     }
     return () => clearTimeout(timeout);
   }, []);
-  const handleRotata = () => {
-    console.log('ref.current');
+
+  const onRotationEnd = () => {
+    openModal(textArray[currentPosition]);
   };
   return (
     <div className={styles.container}>
       <div className={styles.wheelContainer}>
         <img src={ArrowImage} className={styles.arrowImage} alt='Arrow' />
 
-        <div className={styles.circleContainer} ref={ref} onTransitionEnd={handleRotata}>
+        <div className={styles.circleContainer} ref={ref} onTransitionEnd={onRotationEnd}>
           <div className='absolute inset-0 rounded-full border-2 border-gray-400 invisible' />
           <img className={styles.circleImage} src={CircleClearImage} alt='Circle' />
-          <div className={styles.itemsContainer}>
-            {Array.from(Array(8).keys()).map(i => (
-              <Trap key={i} rotation={45 * i} />
-            ))}
-          </div>
+          {/*<div className={styles.itemsContainer}>*/}
+          {/*  {Array.from(Array(8).keys()).map(i => (*/}
+          {/*    <Trap key={i} rotation={45 * i} />*/}
+          {/*  ))}*/}
+          {/*</div>*/}
         </div>
       </div>
       {/* Don't know why, but working only with this shit todo investigate*/}
