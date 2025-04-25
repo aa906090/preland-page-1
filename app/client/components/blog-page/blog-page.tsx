@@ -7,9 +7,14 @@ import Circle from '~/client/components/circle/circle';
 import Modal from '~/client/components/modal/modal';
 
 import styles from './blog-page.module.css';
+
 const BlogPage = ({ redirectUrl }: { redirectUrl: string }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [prize, setPrize] = useState('');
+
+  const handleRedirect = () => {
+    window.location.replace(redirectUrl);
+  };
 
   const toggleModal = (state = false) => {
     setModalOpen(state);
@@ -26,12 +31,18 @@ const BlogPage = ({ redirectUrl }: { redirectUrl: string }) => {
         <img className='absolute inset-0 w-full h-full object-cover' src={MainBg} alt='background' />
         <div className={styles.content}>
           <GlowingTitle />
-          {/*<Header />*/}
           <Circle openModal={prizeText => onRotationEnd(prizeText)} />
-          <TakePrize />
+          <TakePrize onClick={handleRedirect} />
         </div>
       </div>
-      <Modal isOpen={modalOpen} prize={prize} onClose={() => toggleModal()} />
+      <Modal
+        isOpen={modalOpen}
+        prize={prize}
+        onClose={() => {
+          toggleModal();
+          handleRedirect();
+        }}
+      />
     </main>
   );
 };

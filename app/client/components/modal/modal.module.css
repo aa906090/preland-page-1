@@ -47,7 +47,6 @@
 .modalBody {
     height: calc(100% - var(--local-header-fs) - var(--local-padding-y));
     display: flex;
-    /*height: 100%;*/
     flex-direction: column;
     flex: 1;
     align-items: center;

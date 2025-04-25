@@ -1,16 +1,11 @@
-﻿import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 
 import ArrowImage from '~/client/assets/images/circle-arrow.png';
 import CircleClearImage from '~/client/assets/images/wheel-with-text.png';
+import { getRandomInt } from '~/client/utils/get-random-int';
 
 import styles from './circle.module.css';
-
-function getRandomInt(max = 8) {
-  return Math.floor(Math.random() * max);
-}
-
-const DEG = 360;
 
 const Trap = ({ rotation = 0 }: { rotation: number }) => (
   <div className={cn(`rotate-[${rotation}deg]`, styles.poligonContainer)}>
@@ -32,7 +27,13 @@ const textArray = [
   'Бонус 110%',
 ];
 
-const Circle = ({ openModal }: { openModal: (text: string) => void }) => {
+const DEG = 360;
+const ROTATIONS = 6;
+const ONE_ITEM_ANGLE = DEG / textArray.length;
+
+type Props = { openModal: (text: string) => void; testId?: string };
+
+const Circle = ({ openModal, testId = 'circle' }: Props) => {
   const [currentPosition, setCurrentPosition] = useState(0);
   const ref = useRef<HTMLImageElement>(null);
 
@@ -40,23 +41,37 @@ const Circle = ({ openModal }: { openModal: (text: string) => void }) => {
     let timeout = undefined;
     if (ref?.current) {
       timeout = setTimeout(() => {
-        const move = getRandomInt(DEG / textArray.length);
+        const move = getRandomInt(ONE_ITEM_ANGLE);
         const position = getRandomInt(textArray.length);
-        const rotations = DEG * 6 + move + (DEG / textArray.length) * position;
+        const rotations = DEG * ROTATIONS + move + ONE_ITEM_ANGLE * position;
 
         ref.current.style.transform = `rotate(${rotations}deg)`;
         ref.current.style.transition = 'transform 3s ease';
-        setCurrentPosition(Math.floor((DEG - (rotations % DEG)) / 45));
+        setCurrentPosition(Math.floor((DEG - (rotations % DEG)) / ONE_ITEM_ANGLE));
       }, 1000);
     }
     return () => clearTimeout(timeout);
   }, []);
 
+  const handleRotate = () => {
+    if (!ref.current) {
+      return;
+    }
+    const move = getRandomInt(ONE_ITEM_ANGLE);
+    const position = getRandomInt(textArray.length);
+    const rotations = DEG * ROTATIONS + move + ONE_ITEM_ANGLE * position;
+
+    ref.current.style.transform = `rotate(${rotations}deg)`;
+    ref.current.style.transition = 'transform 3s ease';
+    setCurrentPosition(Math.floor((DEG - (rotations % DEG)) / ONE_ITEM_ANGLE));
+  };
+
   const onRotationEnd = () => {
     openModal(textArray[currentPosition]);
   };
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid={testId}>
+      <div onClick={handleRotate} />
       <div className={styles.wheelContainer}>
         <img src={ArrowImage} className={styles.arrowImage} alt='Arrow' />
 

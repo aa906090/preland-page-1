@@ -1,8 +1,11 @@
 ﻿import styles from './take-prize.module.css';
-const TakePrize = () => {
+const TakePrize = ({ onClick }: { onClick: () => void }) => {
   return (
     <div className={styles.container}>
-      <button className={styles.button}>Забрать свой приз</button>
+      {/*  @ts-ignore*/}
+      <button className={styles.button} onClick={onClick}>
+        Забрать свой приз
+      </button>
     </div>
   );
 };

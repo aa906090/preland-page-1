@@ -18,3 +18,10 @@ body{
     background: var(--cl-bg);
     color: var(--cl-text);
 }
+
+@font-face {
+    font-family: 'BellotaItalic';
+    font-style: normal;
+    font-weight: 400;
+    src: local('BellotaItalic'), url("../font/Bellota-BoldItalic.ttf");
+}

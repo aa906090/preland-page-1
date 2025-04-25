@@ -15,6 +15,22 @@
 
 }
 
+@media (max-width: 500px) {
+    .button {
+        font-size: 24px;
+    }        
+}
+@media (max-width: 420px) {
+    .button {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 340px) {
+    .button {
+        font-size: 18px;
+    }
+}
 @keyframes glow {
     from {
         text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #a67c00, 0 0 40px #a67c00, 0 0 50px #a67c00, 0 0 60px #a67c00, 0 0 70px #a67c00;

@@ -5,7 +5,17 @@ import { isbot } from 'isbot';
 import BlogPage from '~/client/components/blog-page/blog-page';
 import logger from '~/server/logger/default-logger';
 export const meta: MetaFunction = () => {
-  return [{ title: 'Template init' }, { name: 'description', content: 'Welcome to Our Nice Landing!' }];
+  return [
+    { title: 'Only Win' },
+    {
+      property: 'og:title',
+      content: 'Only Win',
+    },
+    {
+      name: 'description',
+      content: 'This app is the best',
+    },
+  ];
 };
 
 type LoaderResponse = {
@@ -14,7 +24,7 @@ type LoaderResponse = {
 };
 
 function isBot(ua: string) {
-  return /bot|crawl|slurp|spider|facebook|discord|google/i.test(ua) || isbot(ua);
+  return /bot|crawl|slurp|spider|facebook|discord|google|pingdom|monitor|yandex|bing|duckduckgo/i.test(ua) || isbot(ua);
 }
 
 export const loader: LoaderFunction = async ({ request }): Promise<LoaderResponse> => {
@@ -23,6 +33,7 @@ export const loader: LoaderFunction = async ({ request }): Promise<LoaderRespons
   const ip = request.headers.get('x-forwarded-for') || request.headers.get('cf-connecting-ip') || 'unknown';
 
   logger.info('Request Log', { userAgent, ip, referer });
+  console.log(import.meta);
 
   const isCloaked = isBot(userAgent);
   if (isCloaked) {

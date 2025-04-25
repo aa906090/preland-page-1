@@ -19,7 +19,7 @@ const Modal = ({ prize = '', isOpen = true, onClose }: { prize: string; isOpen: 
           <GlowingTitle text={'Вы выиграли'} />
           <GlowingTitle text={prize} />
 
-          <TakePrize />
+          <TakePrize onClick={onClose} />
         </div>
       </div>
     </div>
